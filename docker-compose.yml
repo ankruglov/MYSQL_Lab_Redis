@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
+      - redis
+    links:
+      - mysql
+      - redis
+  redis:
+    image: "redis:alpine"
+  mysql:
+    image: mysql
+    container_name: mysql
+    ports:
+      - "3309:3306"
+    environment:
+      - MYSQL_PASSWORD=1234
