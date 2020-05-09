@@ -13,6 +13,9 @@
 
 <h2>Для запуска</h2>
 docker run -d —name redis -p 6379:6379 redis
+
 docker run —name mysql -e MYSQL_ROOT_PASSWORD=1234 -d mysql
+
 docker build . -f Dockerfile -t app
+
 docker run -ti —name app -p 8080:8080 —link redis:redis —link mysql:mysql app
